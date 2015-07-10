@@ -6,6 +6,9 @@ $config = [
     'id' => 'normativos',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'defaultRoute' => 'regulations/index',
+    'language' => 'pt-BR',
+    'sourceLanguage' => 'en-US',    
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
