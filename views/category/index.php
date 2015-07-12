@@ -7,24 +7,20 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\CategorySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Categories';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Categorias';
 ?>
 <div class="category-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Create Category', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <h1><span><?= Html::encode($this->title) ?></span>
+    <?= Html::a('Adicionar', ['create'], ['class' => 'btn btn-primary grid-button pull-right']) ?>
+    </h1>
+    <hr/>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
+        'tableOptions' => ['class'=>'table table-striped table-hover'],
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
             'id',
             'description',
 

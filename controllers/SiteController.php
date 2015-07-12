@@ -93,8 +93,5 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
-    public function actionAdministration()
-    {
-        return $this->render('administration');
-    }
+
 }

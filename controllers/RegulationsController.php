@@ -103,6 +103,11 @@ class RegulationsController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionAdministration()
+    {
+        return $this->render('administration');
+    }    
+
     /**
      * Finds the Regulations model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
