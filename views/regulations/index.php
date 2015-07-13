@@ -29,15 +29,15 @@ $this->title = 'Documentos';
 
             $Subcat = Subcat::find()->where("category_id=$id")->all();
             foreach($Subcat as $model2) {
-                $subitem[] = ['label' => $model2->description, 'url' => '#'];
+                $item[] = ['label' => $model2->description, 'url' => '#'];
             }
-
         }
+ 
 
     //  var_dump($subitem);
 
     echo SideNav::widget([
-        'items' => $subitem,
+        'items' => $item,
         //'type' => SideNav::TYPE_DEFAULT,
         //'heading' => 'Options',
         // 'items' => [
@@ -71,14 +71,30 @@ $this->title = 'Documentos';
         'emptyText'    => '</br><p class="text-info">Nenhum documento encontrado!</p>',   
         'summary' => "<p class=\"text-info pull-right\"><h3>Resultado</h3> {totalCount} documento(s)</p>",         
         'columns' => [
-            //'id',
             'subcat_id',
             'name',
             'description',
             'created',
             'updated',
+            [
+            'class' => 'yii\grid\ActionColumn',
+            'contentOptions'=>['style'=>'width: 10%;text-align:left'],
+            'template' => '{open} {attachments}',
+                // 'buttons' => [
+                //     'open' => function ($url, $model) {
+                //         return $model->status_id <> 98 ? Html::a('<span class="glyphicon glyphicon-eye-glyphicon glyphicon-pencil" ></span>', $url, [
+                //                     'title' => 'Alterar',
+                //         ]): '';
+                //     },
+                //     'attachments' => function ($url, $model) {
+                //             return $model->status_id <> 98 ?  Html::a('<span class="glyphicon glyphicon-upload" ></span>', $url, [
+                //                         'title' => 'Anexar Arquivo',
+                //                         //'class'=>'btn btn-primary btn-xs',                                
+                //         ]) : '';
+                //     },
+                // ],
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ],
         ],
     ]); ?>
   </div>

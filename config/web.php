@@ -54,4 +54,6 @@ if (YII_ENV_DEV) {
     $config['modules']['gii'] = 'yii\gii\Module';
 }
 
+Yii::setAlias('@upload', realpath(dirname(__FILE__).'/../../Anexos_Normativos/'));
+Yii::setAlias('@open', 'http://localhost/Anexos_Normativos');
 return $config;
