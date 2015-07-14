@@ -20,10 +20,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'file')->fileInput() ?>
 
-    <?= $form->field($model, 'is_active')->textInput() ?>
+    <?= $form->field($model, 'is_active')->radioList([
+        '1' => 'Sim', 
+        '0' => 'Não',
+        ], ['itemOptions' => ['class' =>'radio-inline','labelOptions'=>array('style'=>'padding:5px;')]])->label('Ativo') ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Gravar' : 'Gravar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

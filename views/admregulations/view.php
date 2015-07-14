@@ -7,23 +7,21 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Admregulations */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Admregulations', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="admregulations-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
+    <h1><span><?= Html::encode($this->title) ?></span>
+        <?= Html::a('Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary pull-right']) ?>
+        <?= Html::a('Excluir', ['delete', 'id' => $model->id], [
+            'class' => 'btn btn-danger pull-right',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Tem certeza que deseja excluir?',
                 'method' => 'post',
             ],
         ]) ?>
-    </p>
+    </h1>
+    <hr/>
 
     <?= DetailView::widget([
         'model' => $model,
@@ -34,8 +32,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'description',
             'created',
             'updated',
-            'file',
-            'is_active',
+            'docname',
+            //'is_active',
+            [
+             'attribute' => 'is_active',
+             'format' => 'raw',
+             'value' => $model->is_active == 1 ? '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Sim' : '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Não',
+             ],
         ],
     ]) ?>
 

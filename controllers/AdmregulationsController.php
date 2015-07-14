@@ -62,13 +62,27 @@ class AdmregulationsController extends Controller
     {
         $model = new Admregulations();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+        //$model->status_id = 1;
+        $model->created = date('Y-m-d');        
+
+            if ($model->load(Yii::$app->request->post())) {
+            // process uploaded image file instance
+            $file = $model->uploadImage();
+ 
+            if ($model->save()) {
+                // upload only if valid uploaded file instance found
+                if ($file !== false) {
+                    $path = $model->getImageFile();
+                    $file->saveAs($path);
+                }
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                // error in saving model
+            }
         }
+        return $this->render('create', [
+            'model'=>$model,
+        ]);
     }
 
     /**
@@ -80,6 +94,8 @@ class AdmregulationsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+
+        $model->updated = date('Y-m-d');   
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
