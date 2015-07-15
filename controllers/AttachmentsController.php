@@ -62,13 +62,28 @@ class AttachmentsController extends Controller
     {
         $model = new Attachments();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+        //$model->status_id = 1;
+        $model->created = date('Y-m-d');        
+
+            if ($model->load(Yii::$app->request->post())) {
+            // process uploaded image file instance
+            $file = $model->uploadImage();
+ 
+            if ($model->save()) {
+                // upload only if valid uploaded file instance found
+                if ($file !== false) {
+                    $path = $model->getImageFile();
+                    $file->saveAs($path);
+                }
+                Yii::$app->session->setFlash("file-success", '<i class="fa fa-check"></i> Arquivo anexado com sucesso!');
+                return $this->redirect(['/admregulations/view', 'id' => $model->regulations_id, '#'=>'checklist']);
+            } else {
+                // error in saving model
+            }
         }
+        return $this->render('create', [
+            'model'=>$model,
+        ]);
     }
 
     /**

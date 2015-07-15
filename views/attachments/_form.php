@@ -10,16 +10,22 @@ use yii\widgets\ActiveForm;
 
 <div class="attachments-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
 
-    <?= $form->field($model, 'regulations_id')->textInput() ?>
+	<?php
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    echo $t = Yii::$app->getRequest()->getQueryParam('id');
 
-    <?= $form->field($model, 'created')->textInput() ?>
+    ?>
+
+    <?= Html::activeHiddenInput($model, 'regulations_id', ['value' => $t]) ?>
+
+    <?= $form->field($model, 'attachlabel')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'file')->fileInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Gravar' : 'Gravar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

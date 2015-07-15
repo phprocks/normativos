@@ -6,9 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Attachments */
 
-$this->title = 'Create Attachments';
-$this->params['breadcrumbs'][] = ['label' => 'Attachments', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Adicionar Anexo';
 ?>
 <div class="attachments-create">
 

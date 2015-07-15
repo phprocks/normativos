@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Attachments */
 
-$this->title = $model->name;
+$this->title = $model->attachlabel;
 $this->params['breadcrumbs'][] = ['label' => 'Attachments', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'regulations_id',
-            'name',
+            'attachlabel',
             'created',
         ],
     ]) ?>

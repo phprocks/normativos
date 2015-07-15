@@ -7,17 +7,14 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\AttachmentsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Attachments';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Anexos';
 ?>
 <div class="attachments-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Create Attachments', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <h1><span><?= Html::encode($this->title) ?></span>
+    <?= Html::a('Adicionar', ['create'], ['class' => 'btn btn-primary grid-button pull-right']) ?>
+    </h1>
+    <hr/>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
