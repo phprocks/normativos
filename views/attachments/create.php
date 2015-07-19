@@ -10,8 +10,8 @@ $this->title = 'Adicionar Anexo';
 ?>
 <div class="attachments-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
+    <h1><i class="fa fa-paperclip"></i> <?= Html::encode($this->title) ?></h1>
+    <hr/>
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>

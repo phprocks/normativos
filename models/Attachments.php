@@ -39,8 +39,8 @@ class Attachments extends \yii\db\ActiveRecord
             [['regulations_id'], 'integer'],
             [['created'], 'safe'],
             [['file', 'filename'], 'safe'],            
-            [['attachlabel'], 'string', 'max' => 100],
-            [['file'], 'file', 'extensions' => 'pdf, jpg', 'maxSize' => 512000, 'tooBig' => 'Arquivo acima do limite de 500KB' , 'skipOnEmpty' => true],
+            [['attachlabel'], 'string', 'max' => 40],
+            [['file'], 'file', 'extensions' => 'pdf, doc, docx, xls, xlsx', 'maxSize' => 5120000, 'tooBig' => 'Arquivo acima do limite de 5 MB' , 'skipOnEmpty' => true],
         ];
     }
 

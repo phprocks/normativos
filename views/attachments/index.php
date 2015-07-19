@@ -24,7 +24,7 @@ $this->title = 'Anexos';
 
             'id',
             'regulations_id',
-            'name',
+            'attachname',
             'created',
 
             ['class' => 'yii\grid\ActionColumn'],

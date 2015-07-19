@@ -19,7 +19,7 @@ class AttachmentsSearch extends Attachments
     {
         return [
             [['id', 'regulations_id'], 'integer'],
-            [['name', 'created'], 'safe'],
+            [['attachlabel', 'attachname','created'], 'safe'],
         ];
     }
 
@@ -61,7 +61,7 @@ class AttachmentsSearch extends Attachments
             'created' => $this->created,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'attachlabel', $this->attachlabel]);
 
         return $dataProvider;
     }

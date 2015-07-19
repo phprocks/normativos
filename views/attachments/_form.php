@@ -8,26 +8,47 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="attachments-form">
+<div class="row">
+    <!-- Inicio Form -->
+    <div class="col-xs-6">
+		<div class="attachments-form">
 
-    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
+	    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
 
-	<?php
+		<?php
 
-    echo $t = Yii::$app->getRequest()->getQueryParam('id');
+	    $t = Yii::$app->getRequest()->getQueryParam('id');
 
-    ?>
+	    ?>
 
-    <?= Html::activeHiddenInput($model, 'regulations_id', ['value' => $t]) ?>
+	    <?= Html::activeHiddenInput($model, 'regulations_id', ['value' => $t]) ?>
 
-    <?= $form->field($model, 'attachlabel')->textInput(['maxlength' => true]) ?>
+	    <?= $form->field($model, 'attachlabel')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'file')->fileInput() ?>
+	    <?= $form->field($model, 'file')->fileInput() ?>
 
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Gravar' : 'Gravar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+	    <div class="form-group">
+	        <?= Html::submitButton($model->isNewRecord ? 'Gravar' : 'Gravar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+	    </div>
+
+	    <?php ActiveForm::end(); ?>
+
+		</div>
+	</div>
+    <!-- Inicio Informativo -->
+    <div class="col-xs-6">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <ul>
+                  <li>O tamanho limite do arquivo é de <b>5 MB</b>.</li></p>
+                  <li>São permitidos arquivos com extensões do tipo:</li>  
+                  <ul>
+                  	<li><b>Acrobat Reader</b> (PDF)</li>
+                  	<li><b>Microsoft Word</b> (DOC e DOCX)</li>
+                  	<li><b>Microsoft Excel</b> (XLS e XLSX)</li>
+                  </ul>
+                </ul>
+              </div>
+            </div>
     </div>
-
-    <?php ActiveForm::end(); ?>
-
 </div>

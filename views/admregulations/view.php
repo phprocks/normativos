@@ -15,9 +15,9 @@ $this->title = $model->name;
 ?>
 <div class="admregulations-view">
 
-    <h1><span><?= Html::encode($this->title) ?></span>
-        <?= Html::a('Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary pull-right']) ?>
-        <?= Html::a('Excluir', ['delete', 'id' => $model->id], [
+    <h1><span><i class="fa fa-file-pdf-o"></i> <?= Html::encode($this->title) ?></span>
+        <?= Html::a('<i class="fa fa-pencil-square-o"></i> Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary pull-right']) ?>
+        <?= Html::a('<i class="fa fa-times"></i> Excluir', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger pull-right',
             'data' => [
                 'confirm' => 'Tem certeza que deseja excluir?',
@@ -34,8 +34,18 @@ $this->title = $model->name;
             'subcat_id',
             'name',
             'description',
-            'created',
-            'updated',
+            //'created',
+            [ 
+              'attribute' => 'created',
+              'format' => 'raw',
+              'value' => date("d/m/Y",  strtotime($model->created)),
+            ],            
+            //'updated',
+            [ 
+              'attribute' => 'updated',
+              'format' => 'raw',
+              'value' => $model->updated <> '' ? date("d/m/Y",  strtotime($model->updated)) : '',
+            ],            
             'docname',
             //'is_active',
             [
@@ -46,15 +56,14 @@ $this->title = $model->name;
         ],
     ]) ?>
     <a name="checklist"></a>
-    <h1><i class="fa fa-list-alt"></i> Anexos
+    <h1><i class="fa fa-paperclip"></i> Anexos
     <div class="pull-right">
-
     <?php
-        echo Html::a('<i class="fa fa-cloud-upload"></i> Anexar Arquivos', ['/attachments/create', 'id' => $model->id], ['class' => 'btn btn-success']);
+    echo Html::a('<i class="fa fa-plus"></i> Anexar Arquivos', ['/attachments/create', 'id' => $model->id], ['class' => 'btn btn-primary']);
     ?>
-
     </div>
     </h1>
+    <hr/>
 
     <?php if ($flash = Yii::$app->session->getFlash("file-success")): ?>
 
@@ -66,7 +75,7 @@ $this->title = $model->name;
 
     <?php
     $dataProvider = new SqlDataProvider([
-        'sql' => "SELECT id, regulations_id, attachlabel, attachname, created  FROM attachments WHERE regulations_id = ".$model->id." ORDER BY attachname ASC",
+        'sql' => "SELECT id, regulations_id, attachlabel, attachname, created  FROM attachments WHERE regulations_id = ".$model->id." ORDER BY created DESC",
         'totalCount' => 200,
         'sort' =>false,
         'key'  => 'id',
@@ -76,20 +85,57 @@ $this->title = $model->name;
     ]);
     ?>
 
+    <?php Pjax::begin(['id' => 'pjax-container']) ?>
     <?= GridView::widget([
-    'dataProvider' => $dataProvider,
-    'emptyText'    => '</br><p class="text-danger">Nenhum arquivo anexado!</p>',
-    'summary'      =>  '',
-    'showHeader'   => false,    
-    'columns' => [
-        //'id',
-        //'regulations_id',
-        'attachlabel',
-        'attachname',
-        'created',
+        'dataProvider' => $dataProvider,
+        'emptyText'    => '</br><p class="text-danger">Nenhum arquivo anexado!</p>',
+        'summary'      =>  '',
+        'showHeader'   => false,    
+        'columns' => [
+            //'attachlabel',
+            //'attachname',
+            [
+               'attribute'=>'attachlabel',
+               'format' => 'raw',
+               'value'=>function ($data) {
+                    return Html::a($data["attachlabel"],Yii::getAlias('@open')."/".$data["attachname"], ['target' => '_blank']);
+                },
+                'contentOptions'=>['style'=>'width: 70%;text-align:left'],
+            ],
+            [ 
+              'attribute' => 'created',
+              'format' => 'raw',
+              'value'=>function ($data) {
+                    return "Anexado em: ".date("d/m/Y",  strtotime($data["created"]));
+                },
+            ],  
+            [
+            'class' => 'yii\grid\ActionColumn',
+            'contentOptions'=>['style'=>'width: 10%;text-align:center'],
+            'controller' => 'attachments',
+            'template' => '{delete}',
+            'buttons' => [
+                        'delete' => function ($url) {
+                        return Html::a('<span class="glyphicon glyphicon-trash"></span>', '#', [
+                            'title' => 'Excluir Anexo',
+                            'aria-label' => 'Excluir',
+                            'onclick' => "
+                                if (confirm('Comfirma exclusão do anexo?')) {
+                                    $.ajax('$url', {
+                                        type: 'POST'
+                                    }).done(function(data) {
+                                        $.pjax.reload({container: '#pjax-container'});
+                                    });
+                                }
+                                return false;
+                            ",
+                        ]);
+                    },
+                ],
+            ],
+        ],
+    ]); ?>
+    <?php Pjax::end() ?>
 
-        ['class' => 'yii\grid\ActionColumn'],
-    ],
-]); ?>
 
 </div>

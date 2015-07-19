@@ -58,7 +58,7 @@ AppAsset::register($this);
 
     <footer class="footer">
         <div class="container">
-            <p class="pull-left">&copy; Sicoob Crediriodoce <?= date('Y') ?></p>
+            <p class="pull-left">Portal de Instrumentos Normativos - &copy; Sicoob Crediriodoce <?= date('Y') ?></p>
             <p class="pull-right"><?php echo Html::a('Administração', ['/regulations/administration']);?></p>
         </div>
     </footer>
