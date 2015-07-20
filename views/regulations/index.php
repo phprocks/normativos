@@ -21,6 +21,12 @@ $this->title = 'Documentos';
   <div class="col-md-3">
     <?php
 
+    echo \cyneek\yii2\menu\Menu::widget([
+        //'heading' => 'Options',
+        //'type' => SideNav::TYPE_DEFAULT,
+        'class'=>'head-style',
+        ]);
+
         $item = [];
         $Category = Category::find()->all();
         foreach($Category as $model) {
@@ -80,19 +86,19 @@ $this->title = 'Documentos';
             'class' => 'yii\grid\ActionColumn',
             'contentOptions'=>['style'=>'width: 10%;text-align:left'],
             'template' => '{open} {attachments}',
-                // 'buttons' => [
-                //     'open' => function ($url, $model) {
-                //         return $model->status_id <> 98 ? Html::a('<span class="glyphicon glyphicon-eye-glyphicon glyphicon-pencil" ></span>', $url, [
-                //                     'title' => 'Alterar',
-                //         ]): '';
-                //     },
-                //     'attachments' => function ($url, $model) {
-                //             return $model->status_id <> 98 ?  Html::a('<span class="glyphicon glyphicon-upload" ></span>', $url, [
-                //                         'title' => 'Anexar Arquivo',
-                //                         //'class'=>'btn btn-primary btn-xs',                                
-                //         ]) : '';
-                //     },
-                // ],
+                'buttons' => [
+                    'open' => function ($url, $model) {
+                        return $model->is_active <> 0 ? Html::a('<span class="glyphicon glyphicon-open-file" ></span>', $url, [
+                                    'title' => 'Abrir',
+                        ]): '';
+                    },
+                    'attachments' => function ($url, $model) {
+                            return $model->is_active <> 0 ?  Html::a('<span class="glyphicon glyphicon-paperclip" ></span>', $url, [
+                                        'title' => 'Anexos',
+                                        //'class'=>'btn btn-primary btn-xs',                                
+                        ]) : '';
+                    },
+                ],
 
             ],
         ],

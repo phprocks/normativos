@@ -278,12 +278,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Patroklo/yii2-menu.git",
-                "reference": "28701698a94715fae8015761f6116e9bb1ef58be"
+                "reference": "2d24273ef6254bcaa7ee34869add6a06885b237e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Patroklo/yii2-menu/zipball/28701698a94715fae8015761f6116e9bb1ef58be",
-                "reference": "28701698a94715fae8015761f6116e9bb1ef58be",
+                "url": "https://api.github.com/repos/Patroklo/yii2-menu/zipball/2d24273ef6254bcaa7ee34869add6a06885b237e",
+                "reference": "2d24273ef6254bcaa7ee34869add6a06885b237e",
                 "shasum": ""
             },
             "require": {
@@ -312,7 +312,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2015-05-26 09:26:24"
+            "time": "2015-07-19 15:51:23"
         },
         {
             "name": "ezyang/htmlpurifier",
