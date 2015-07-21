@@ -42,7 +42,7 @@ $this->title = 'Gestão dos Documentos';
                 'buttons' => [
                     'attachments' => function ($url, $model) {
                         //$url = Url::toRoute('attachments');
-                            return $model->is_active <> 98 ?  Html::a('<span class="glyphicon glyphicon-paperclip" ></span>', $url, [
+                            return $model->is_active <> 0 ?  Html::a('<span class="glyphicon glyphicon-paperclip" ></span>', $url, [
                                         'title' => 'Anexos',
                                         //'class'=>'btn btn-primary btn-xs',                                
                         ]) : '';

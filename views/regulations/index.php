@@ -23,10 +23,12 @@ $this->title = 'Documentos';
 
     echo \cyneek\yii2\menu\Menu::widget([
         //'heading' => 'Options',
-        //'type' => SideNav::TYPE_DEFAULT,
-        'class'=>'head-style',
+        'options' => ['heading' => false],
+        //'class'=>'head-style',
         ]);
-
+    ?>
+    <?php
+    /*
         $item = [];
         $Category = Category::find()->all();
         foreach($Category as $model) {
@@ -63,11 +65,11 @@ $this->title = 'Documentos';
         //         ],
         //     ],
         // ],
-    ]);      
+    ]);    
+    */  
     ?>
   </div>
   <div class="col-md-9">
-    <h3>Pesquisar</h3>
     <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
@@ -75,21 +77,22 @@ $this->title = 'Documentos';
         //'filterModel' => $searchModel,
         'tableOptions' => ['class'=>'table table-striped table-hover'],
         'emptyText'    => '</br><p class="text-info">Nenhum documento encontrado!</p>',   
-        'summary' => "<p class=\"text-info pull-right\"><h3>Resultado</h3> {totalCount} documento(s)</p>",         
+        'summary' => "<p class=\"text-info pull-right\"><h5>Resultado: {totalCount} documento(s)</h5></p>",         
         'columns' => [
             'subcat_id',
             'name',
             'description',
             'created',
-            'updated',
+            //'updated',
             [
             'class' => 'yii\grid\ActionColumn',
             'contentOptions'=>['style'=>'width: 10%;text-align:left'],
             'template' => '{open} {attachments}',
                 'buttons' => [
                     'open' => function ($url, $model) {
-                        return $model->is_active <> 0 ? Html::a('<span class="glyphicon glyphicon-open-file" ></span>', $url, [
+                        return $model->is_active <> 0 ? Html::a('<span class="glyphicon glyphicon-open-file" ></span>', Yii::getAlias('@open')."/".$model->docname, [
                                     'title' => 'Abrir',
+                                    'target' => '_blank'
                         ]): '';
                     },
                     'attachments' => function ($url, $model) {
