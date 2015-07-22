@@ -79,14 +79,31 @@ $this->title = 'Documentos';
         'emptyText'    => '</br><p class="text-info">Nenhum documento encontrado!</p>',   
         'summary' => "<p class=\"text-info pull-right\"><h5>Resultado: {totalCount} documento(s)</h5></p>",         
         'columns' => [
-            'subcat_id',
-            'name',
-            'description',
-            'created',
-            //'updated',
+            [
+             'attribute' => 'subcat_id',
+             'enableSorting' => true,
+             'contentOptions'=>['style'=>'width: 5%;text-align:left'],
+            ],            
+            [
+             'attribute' => 'name',
+             'enableSorting' => true,
+             'contentOptions'=>['style'=>'width: 20%;text-align:left'],
+            ], 
+            [
+             'attribute' => 'description',
+             'enableSorting' => true,
+             'contentOptions'=>['style'=>'width: 30%;text-align:left'],
+            ],            
+            [
+             'attribute' => 'created',
+             'enableSorting' => true,
+             'contentOptions'=>['style'=>'width: 5%;text-align:left'],
+             'format' => ['date', 'php:d/m/Y'],
+            ],
             [
             'class' => 'yii\grid\ActionColumn',
-            'contentOptions'=>['style'=>'width: 10%;text-align:left'],
+            'header'=> 'Ações',
+            'contentOptions'=>['style'=>'width: 2%;text-align:left'],
             'template' => '{open} {attachments}',
                 'buttons' => [
                     'open' => function ($url, $model) {
