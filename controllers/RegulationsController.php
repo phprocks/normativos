@@ -70,6 +70,14 @@ class RegulationsController extends Controller
             ]);
         }
     }
+    public function actionList()
+    {
+        $model = new Regulations();
+
+        return  $this->renderAjax('list', [ 
+            'model' => $model,
+        ]);
+    }
 
     /**
      * Updates an existing Regulations model.

@@ -5,6 +5,7 @@ use yii\grid\GridView;
 use kartik\sidenav\SideNav;
 use app\models\Category;
 use app\models\Subcat;
+use yii\bootstrap\Modal;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\RegulationsSearch */
@@ -113,16 +114,55 @@ $this->title = 'Documentos';
                         ]): '';
                     },
                     'attachments' => function ($url, $model) {
-                            return $model->is_active <> 0 ?  Html::a('<span class="glyphicon glyphicon-paperclip" ></span>', $url, [
-                                        'title' => 'Anexos',
-                                        //'class'=>'btn btn-primary btn-xs',                                
-                        ]) : '';
+                            return Html::a('<span class="glyphicon glyphicon-paperclip" ></span>',['list','id'=>8],[
+                                                    'data-toggle'=>"modal",
+                                                    'data-target'=>"#myModal",
+                                                    'data-title'=>"Anexos",
+                                                    ]);
                     },
+                    // 'attachments' => function ($url, $model) {
+                    //         return $model->is_active <> 0 ?  Html::a('<span class="glyphicon glyphicon-paperclip" ></span>', $url, [
+                    //                     'title' => 'Anexos',
+                    //                     //'class'=>'btn btn-primary btn-xs',                                
+                    //     ]) : '';
+                    // },
                 ],
 
             ],
         ],
     ]); ?>
+
+    <?php
+    Modal::begin([
+        'id' => 'myModal',
+        'header' => '<h3 class="modal-title">Anexos</h3>',
+    ]);
+     
+    echo '...';
+     
+    Modal::end();
+
+    $this->registerJs("
+    $('#myModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        var modal = $(this)
+        var title = button.data('title') 
+        var href = button.attr('href') 
+        modal.find('.modal-title').html(title)
+        modal.find('.modal-body').html('<i class=\"fa fa-spinner fa-spin\"></i>')
+        $.post(href)
+            .done(function( data ) {
+                modal.find('.modal-body').html(data)
+            });
+        })
+");
+
+    // echo Html::a('teste',['create','group_id'=>8],[
+    //                                                 'data-toggle'=>"modal",
+    //                                                 'data-target'=>"#myModal",
+    //                                                 'data-title'=>"Detail Data",
+    //                                                 ]);
+    ?>
   </div>
 </div>
 
