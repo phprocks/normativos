@@ -17,6 +17,11 @@ $this->title = 'Gestão dos Documentos';
     </h1>
     <hr/>
 
+    <div class="col-xs-6 col-md-3">
+
+        <?php  echo $this->render('_menu'); ?>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-9">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         //'filterModel' => $searchModel,
@@ -27,31 +32,34 @@ $this->title = 'Gestão dos Documentos';
             'name',
             'description',
             [ 
-              'attribute' => 'is_active',
-              'format' => 'raw',
-              'value' => function ($model) {                      
+            'attribute' => 'is_active',
+            'format' => 'raw',
+            'value' => function ($model) {                      
                     //return $model->status->name;
-                    return $model->is_active == 1 ? '<span style="color:green" class="glyphicon glyphicon-ok" aria-hidden="true"></span> Sim' : '<span style="color:red" class="glyphicon glyphicon-remove" aria-hidden="true"></span> Não';
+                    return $model->is_active == 1 ? '<span style="color:green" class="glyphicon glyphicon-ok" aria-hidden="true"></span>' : '<span style="color:red" class="glyphicon glyphicon-remove" aria-hidden="true"></span>';
                     },
+            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
             ],
+            // [
+            // 'class' => 'yii\grid\ActionColumn',
+            // 'contentOptions'=>['style'=>'width: 10%;text-align:left'],
+            // 'template' => '{attachments}',
+            // 'controller' => 'attachments',
+            //     'buttons' => [
+            //         'attachments' => function ($url, $model) {
+            //             //$url = Url::toRoute('attachments');
+            //                 return $model->is_active <> 0 ?  Html::a('<span class="glyphicon glyphicon-paperclip" ></span>', $url, [
+            //                             'title' => 'Anexos',
+            //                             //'class'=>'btn btn-primary btn-xs',                                
+            //             ]) : '';
+            //         },
+            //     ],
+            // ],
             [
             'class' => 'yii\grid\ActionColumn',
-            'contentOptions'=>['style'=>'width: 10%;text-align:left'],
-            'template' => '{attachments}',
-            'controller' => 'attachments',
-                'buttons' => [
-                    'attachments' => function ($url, $model) {
-                        //$url = Url::toRoute('attachments');
-                            return $model->is_active <> 0 ?  Html::a('<span class="glyphicon glyphicon-paperclip" ></span>', $url, [
-                                        'title' => 'Anexos',
-                                        //'class'=>'btn btn-primary btn-xs',                                
-                        ]) : '';
-                    },
-                ],
+            'contentOptions'=>['style'=>'width: 10%;text-align:right'],
             ],
-            [
-            'class' => 'yii\grid\ActionColumn',],
         ],
-    ]); ?>
-
+    ]); ?>    
+    </div>
 </div>

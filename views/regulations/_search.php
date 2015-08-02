@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+//use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\RegulationsSearch */
@@ -18,12 +19,13 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'name')->textInput(array('placeholder' => 'Nome'))->label(''); ?>
+    <?= $form->field($model, 'name')->textInput(['placeholder' => 'Nome','maxlength'=>10,'style'=>'width:300px'])->label(''); ?>
 
-    <?= $form->field($model, 'created')->textInput(array('placeholder' => 'Publicação'))->label(''); ?>
+    <?= $form->field($model, 'created')->textInput(['placeholder' => 'Publicação','maxlength'=>10,'style'=>'width:150px'])->label(''); ?>
 
             <div class="form-group">
-                <?= Html::submitButton('Pesquisar', ['class' => 'btn btn-primary']) ?>
+                <?= Html::submitButton('Pesquisar', ['class' => 'btn btn-success']) ?>
+                <p class="help-block help-block-error"></p>
             </div>
 
     <?php ActiveForm::end(); ?>

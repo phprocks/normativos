@@ -71,12 +71,17 @@ $this->title = 'Documentos';
     ?>
   </div>
   <div class="col-md-9">
-    <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
+    <div class="panel panel-default">
+    <div class="panel-heading"><b>Pesquisar</b></div>
+      <div class="panel-body">
+        <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
+      </div>
+    </div>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         //'filterModel' => $searchModel,
-        'tableOptions' => ['class'=>'table table-striped table-hover'],
+        'tableOptions' => ['class'=>'table table-striped table-bordered'],
         'emptyText'    => '</br><p class="text-info">Nenhum documento encontrado!</p>',   
         'summary' => "<p class=\"text-info pull-right\"><h5>Resultado: {totalCount} documento(s)</h5></p>",         
         'columns' => [
@@ -98,14 +103,14 @@ $this->title = 'Documentos';
             [
              'attribute' => 'created',
              'enableSorting' => true,
-             'contentOptions'=>['style'=>'width: 5%;text-align:left'],
+             'contentOptions'=>['style'=>'width: 5%;text-align:center'],
              'format' => ['date', 'php:d/m/Y'],
             ],
             [
             'class' => 'yii\grid\ActionColumn',
             'header'=> 'Ações',
-            'contentOptions'=>['style'=>'width: 2%;text-align:left'],
-            'template' => '{open} {attachments}',
+            'contentOptions'=>['style'=>'width: 3%;text-align:center'],
+            'template' => '{open} {attachments} {info}',
                 'buttons' => [
                     'open' => function ($url, $model) {
                         return $model->is_active <> 0 ? Html::a('<span class="glyphicon glyphicon-open-file" ></span>', Yii::getAlias('@open')."/".$model->docname, [
@@ -114,12 +119,19 @@ $this->title = 'Documentos';
                         ]): '';
                     },
                     'attachments' => function ($url, $model) {
-                            return Html::a('<span class="glyphicon glyphicon-paperclip" ></span>',['list','id'=>8],[
+                            return Html::a('<span class="glyphicon glyphicon-paperclip" ></span>',['list','id'=>$model->id],[
                                                     'data-toggle'=>"modal",
                                                     'data-target'=>"#myModal",
                                                     'data-title'=>"Anexos",
                                                     ]);
                     },
+                    // 'info' => function ($url, $model) {
+                    //         return Html::a('<span class="glyphicon glyphicon-info-sign" ></span>',['list','id'=>$model->id],[
+                    //                                 'data-toggle'=>"modal",
+                    //                                 'data-target'=>"#myModal",
+                    //                                 'data-title'=>"Informação",
+                    //                                 ]);
+                    // },                    
                     // 'attachments' => function ($url, $model) {
                     //         return $model->is_active <> 0 ?  Html::a('<span class="glyphicon glyphicon-paperclip" ></span>', $url, [
                     //                     'title' => 'Anexos',
