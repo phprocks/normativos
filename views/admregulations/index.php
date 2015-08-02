@@ -9,6 +9,7 @@ use yii\helpers\Url;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Gestão dos Documentos';
+//$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="admregulations-index">
 

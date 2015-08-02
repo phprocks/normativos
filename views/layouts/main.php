@@ -51,15 +51,17 @@ AppAsset::register($this);
         <div class="container">
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                'homeLink' => false,
             ]) ?>
             <?= $content ?>
         </div>
     </div>
-
+    <div style="background-image: url('images/footer.jpg'); height: 29px;"></div>
     <footer class="footer">
         <div class="container">
             <p class="pull-left">Portal de Instrumentos Normativos - &copy; Sicoob Crediriodoce <?= date('Y') ?></p>
-            <p class="pull-right"><?php echo Html::a('Administração', ['/regulations/administration']);?></p>
+            <p class="pull-right"><i class="fa fa-lock"></i>
+ <?php echo Html::a('Administração', ['/admregulations/index'], ['style'=>'color:#fff;']);?></p>
         </div>
     </footer>
 

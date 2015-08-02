@@ -12,11 +12,11 @@
                     ],
                     [
                         'label'   => 'Categorias',
-                        'url'     => ['/category/index'],
+                        'url'     => ['/adm-menu-items/index'],
                     ],
                     [
-                        'label'   => 'Minha Senha',
-                        'url'     => ['/user/profile'],
+                        'label'   => 'Minha Conta',
+                        'url'     => ['/user/account'],
                     ],
                     [
                         'label'   => 'Sair',

@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Admregulations;
+use app\models\AdmMenuItems;
 
 /**
- * AdmregulationsSearch represents the model behind the search form about `app\models\Admregulations`.
+ * AdmMenuItemsSearch represents the model behind the search form about `app\models\AdmMenuItems`.
  */
-class AdmregulationsSearch extends Admregulations
+class AdmMenuItemsSearch extends AdmMenuItems
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class AdmregulationsSearch extends Admregulations
     public function rules()
     {
         return [
-            [['id', 'subcat_id', 'is_active'], 'integer'],
-            [['name', 'description', 'created', 'updated', 'file'], 'safe'],
+            [['id', 'visible', 'parent_id'], 'integer'],
+            [['name', 'label', 'icon', 'url', 'options'], 'safe'],
         ];
     }
 
@@ -41,18 +41,10 @@ class AdmregulationsSearch extends Admregulations
      */
     public function search($params)
     {
-        $query = Admregulations::find();
+        $query = AdmMenuItems::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort' => [
-                'defaultOrder' => [
-                    'id' => SORT_DESC, 
-                    ]
-            ],
-            'pagination' => [
-                'pageSize' => 50,
-            ],
         ]);
 
         $this->load($params);
@@ -65,15 +57,15 @@ class AdmregulationsSearch extends Admregulations
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'subcat_id' => $this->subcat_id,
-            'created' => $this->created,
-            'updated' => $this->updated,
-            'is_active' => $this->is_active,
+            'visible' => $this->visible,
+            'parent_id' => $this->parent_id,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'file', $this->file]);
+            ->andFilterWhere(['like', 'label', $this->label])
+            ->andFilterWhere(['like', 'icon', $this->icon])
+            ->andFilterWhere(['like', 'url', $this->url])
+            ->andFilterWhere(['like', 'options', $this->options]);
 
         return $dataProvider;
     }

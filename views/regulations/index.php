@@ -11,7 +11,7 @@ use yii\bootstrap\Modal;
 /* @var $searchModel app\models\RegulationsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Documentos';
+$this->title = 'Categorias';
 
 ?>
 <div class="regulations-index">
