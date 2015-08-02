@@ -27,7 +27,12 @@ $this->title = $model->name;
     </h1>
     <hr/>
 
-    <?= DetailView::widget([
+    <div class="col-xs-6 col-md-3">
+
+        <?php  echo $this->render('_menu'); ?>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-9">
+        <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
@@ -136,6 +141,6 @@ $this->title = $model->name;
         ],
     ]); ?>
     <?php Pjax::end() ?>
-
+    </div>
 
 </div>

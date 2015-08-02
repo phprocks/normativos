@@ -19,7 +19,8 @@
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "cyneek/yii2-menu": "dev-master",
-        "kartik-v/yii2-widget-sidenav": "*"
+        "kartik-v/yii2-widget-sidenav": "*",
+        "amnah/yii2-user": "~3.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

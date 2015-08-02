@@ -14,10 +14,15 @@
                         'label'   => 'Categorias',
                         'url'     => ['/category/index'],
                     ],
-                    // [
-                    //     'label'   => 'Visao geral > Média mensal',
-                    //     'url'     => ['/solicitation/by_analyst'],
-                    // ],                                   
+                    [
+                        'label'   => 'Minha Senha',
+                        'url'     => ['/user/profile'],
+                    ],
+                    [
+                        'label'   => 'Sair',
+                        'url'     => ['/user/logout'],
+                        'linkOptions' => ['data-method' => 'post']
+                    ],                       
                 ],
                 'options' => ['class' =>'nav-pills nav-stacked'], // set this to nav-tab to get tab-styled navigation
             ]);
