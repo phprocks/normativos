@@ -10,20 +10,22 @@ use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $model app\models\Admregulations */
 
-$this->title = $model->name;
+$this->title = 'Visualização do Documento ' . '#' . $model->id;
 
 ?>
 <div class="admregulations-view">
 
-    <h1><span><i class="fa fa-file-pdf-o"></i> <?= Html::encode($this->title) ?></span>
-        <?= Html::a('<i class="fa fa-pencil-square-o"></i> Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary pull-right']) ?>
+    <h1><span><?= Html::encode($this->title) ?></span>
+    <div class="pull-right">
+        <?= Html::a('<i class="fa fa-pencil-square-o"></i> Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
         <?= Html::a('<i class="fa fa-times"></i> Excluir', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger pull-right',
+            'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Tem certeza que deseja excluir?',
                 'method' => 'post',
             ],
         ]) ?>
+        </div>
     </h1>
     <hr/>
 
@@ -64,7 +66,7 @@ $this->title = $model->name;
     <h1><i class="fa fa-paperclip"></i> Anexos
     <div class="pull-right">
     <?php
-    echo Html::a('<i class="fa fa-plus"></i> Anexar Arquivos', ['/attachments/create', 'id' => $model->id], ['class' => 'btn btn-primary']);
+    echo Html::a('<i class="fa fa-plus"></i> Anexar Arquivos', ['/attachments/create', 'id' => $model->id], ['class' => 'btn btn-success']);
     ?>
     </div>
     </h1>
@@ -105,7 +107,7 @@ $this->title = $model->name;
                'value'=>function ($data) {
                     return Html::a($data["attachlabel"],Yii::getAlias('@open')."/".$data["attachname"], ['target' => '_blank']);
                 },
-                'contentOptions'=>['style'=>'width: 70%;text-align:left'],
+                'contentOptions'=>['style'=>'width: 60%;text-align:left'],
             ],
             [ 
               'attribute' => 'created',

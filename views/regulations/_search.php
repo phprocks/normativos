@@ -24,7 +24,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'created')->textInput(['placeholder' => 'Publicação','maxlength'=>10,'style'=>'width:150px'])->label(''); ?>
 
             <div class="form-group">
-                <?= Html::submitButton('Pesquisar', ['class' => 'btn btn-success']) ?>
+                <?= Html::submitButton('<i class="fa fa-search"></i> Pesquisar', ['class' => 'btn btn-success']) ?>
                 <p class="help-block help-block-error"></p>
             </div>
 

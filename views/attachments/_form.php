@@ -10,7 +10,6 @@ use yii\widgets\ActiveForm;
 
 <div class="row">
     <!-- Inicio Form -->
-    <div class="col-xs-6">
 		<div class="attachments-form">
 
 	    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
@@ -23,7 +22,7 @@ use yii\widgets\ActiveForm;
 
 	    <?= Html::activeHiddenInput($model, 'regulations_id', ['value' => $t]) ?>
 
-	    <?= $form->field($model, 'attachlabel')->textInput(['maxlength' => true]) ?>
+	    <?= $form->field($model, 'attachlabel')->textInput(['maxlength' => 40, 'style'=>'width:350px']) ?>
 
 	    <?= $form->field($model, 'file')->fileInput() ?>
 
@@ -34,9 +33,7 @@ use yii\widgets\ActiveForm;
 	    <?php ActiveForm::end(); ?>
 
 		</div>
-	</div>
     <!-- Inicio Informativo -->
-    <div class="col-xs-6">
             <div class="panel panel-default">
               <div class="panel-body">
                 <ul>
@@ -50,5 +47,4 @@ use yii\widgets\ActiveForm;
                 </ul>
               </div>
             </div>
-    </div>
 </div>
