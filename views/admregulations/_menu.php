@@ -7,19 +7,19 @@
                 'encodeLabels' => false,
                 'items' => [
                     [
-                        'label'   => 'Gestão dos Documentos',
+                        'label'   => '<i class="fa fa-files-o"></i> Gestão dos Documentos',
                         'url'     => ['/admregulations/index'],
                     ],
                     [
-                        'label'   => 'Categorias',
+                        'label'   => '<i class="fa fa-tags"></i> Gestão das Categorias',
                         'url'     => ['/adm-menu-items/index'],
                     ],
                     [
-                        'label'   => 'Minha Conta',
+                        'label'   => '<i class="fa fa-user"></i> Minha Conta',
                         'url'     => ['/user/account'],
                     ],
                     [
-                        'label'   => 'Sair',
+                        'label'   => '<i class="fa fa-power-off"></i> Sair do Sistema',
                         'url'     => ['/user/logout'],
                         'linkOptions' => ['data-method' => 'post']
                     ],                       

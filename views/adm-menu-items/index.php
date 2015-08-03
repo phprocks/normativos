@@ -25,6 +25,7 @@ $this->title = 'Gestão das Categorias';
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         //'filterModel' => $searchModel,
+        'tableOptions' => ['class'=>'table table-striped table-hover'],        
         'columns' => [
             'id',
             //'name',

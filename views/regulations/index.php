@@ -24,7 +24,11 @@ $this->title = 'Categorias';
 
     echo \cyneek\yii2\menu\Menu::widget([
         //'heading' => 'Options',
-        'options' => ['heading' => false],
+        'options' => [
+            'type' => SideNav::TYPE_DEFAULT,
+            'heading' => false,
+            'encodeLabels' => false,
+            ],
         //'class'=>'head-style',
         ]);
     ?>
@@ -123,6 +127,7 @@ $this->title = 'Categorias';
                                                     'data-toggle'=>"modal",
                                                     'data-target'=>"#myModal",
                                                     'data-title'=>"Anexos",
+                                                    'title' => 'Visualizar Anexos',
                                                     ]);
                     },
                     // 'info' => function ($url, $model) {

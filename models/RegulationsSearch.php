@@ -15,11 +15,13 @@ class RegulationsSearch extends Regulations
     /**
      * @inheritdoc
      */
+    public $globalSearch;
+
     public function rules()
     {
         return [
             [['id', 'subcat_id'], 'integer'],
-            [['name', 'description', 'created', 'updated'], 'safe'],
+            [['name', 'description', 'created', 'updated', 'globalSearch'], 'safe'],
         ];
     }
 
@@ -70,8 +72,8 @@ class RegulationsSearch extends Regulations
             'updated' => $this->updated,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'description', $this->description]);
+        $query->orFilterWhere(['like', 'name', $this->globalSearch])
+            ->orFilterWhere(['like', 'description', $this->globalSearch]);
 
         return $dataProvider;
     }

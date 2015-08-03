@@ -12,8 +12,15 @@ $this->title = 'Novo Documento';
 
     <h1><?= Html::encode($this->title) ?></h1>
     <hr/>
+
+    <div class="col-xs-6 col-md-3">
+        <?php  echo $this->render('_menu'); ?>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-9">
+
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
+    </div>
 
 </div>

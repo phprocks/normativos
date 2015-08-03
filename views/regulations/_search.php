@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'name')->textInput(['placeholder' => 'Nome','maxlength'=>10,'style'=>'width:300px'])->label(''); ?>
+    <?= $form->field($model, 'globalSearch')->textInput(['placeholder' => 'Nome ou Descrição','maxlength'=>10,'style'=>'width:300px'])->label(''); ?>
 
     <?= $form->field($model, 'created')->textInput(['placeholder' => 'Publicação','maxlength'=>10,'style'=>'width:150px'])->label(''); ?>
 

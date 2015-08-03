@@ -57,7 +57,8 @@ class Admregulations extends \yii\db\ActiveRecord
             'description' => 'Descrição',
             'created' => 'Publicação',
             'updated' => 'Alteração',
-            'docname' => 'Arquivo',
+            'docname' => 'Nome do Arquivo',
+            'file' => 'Arquivo',
             'is_active' => 'Ativo',
         ];
     }
