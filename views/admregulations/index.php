@@ -27,11 +27,16 @@ $this->title = 'Gestão dos Documentos';
     <div class="col-xs-12 col-sm-6 col-md-9">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        //'filterModel' => $searchModel,
-        'tableOptions' => ['class'=>'table table-striped table-hover'],
+        'filterModel' => $searchModel,
+        'tableOptions' => ['class'=>'table table-striped table-hover '],
+        'emptyText'    => '</br><p class="text-info">Nenhum documento encontrado!</p>',   
+        'summary' => "<p class=\"text-info pull-right\"><h5>Exibindo {begin} a {end} de {totalCount} documento(s) em {pageCount} pagina(s)</h5></p>",        
         'columns' => [
-            'id',
-            //'subcat_id',
+            [
+             'attribute' => 'id',
+             'enableSorting' => true,
+             'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            ],  
             [
              'attribute' => 'subcat_id',
              'format' => 'raw',
@@ -39,10 +44,14 @@ $this->title = 'Gestão dos Documentos';
              'value' => function ($model) {                      
                     return $model->admMenuItems->label;
                     },
-             //'filter' => ArrayHelper::map(Location::find()->orderBy('nickname')->asArray()->all(), 'id', 'nickname'),
-             //'contentOptions'=>['style'=>'width: 7%;text-align:left'],
+             'filter' => ArrayHelper::map(AdmMenuItems::find()->orderBy('label')->asArray()->all(), 'id', 'label'),
+             'contentOptions'=>['style'=>'width: 20%;text-align:left'],
             ],            
-            'name',
+            [
+             'attribute' => 'name',
+             'enableSorting' => true,
+             'contentOptions'=>['style'=>'width: 40%;text-align:left'],
+            ], 
             //'description',
             [ 
             'attribute' => 'is_active',
