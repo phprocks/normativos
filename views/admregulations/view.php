@@ -38,7 +38,12 @@ $this->title = 'Visualização do Documento ' . '#' . $model->id;
         'model' => $model,
         'attributes' => [
             'id',
-            'subcat_id',
+            //'subcat_id',
+            [ 
+              'label' => 'Categoria',
+              'format' => 'raw',
+              'value' => $model->admMenuItems->label,
+            ],            
             'name',
             'description',
             //'created',

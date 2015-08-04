@@ -58,4 +58,8 @@ class AdmMenuItems extends \yii\db\ActiveRecord
             'parent_id' => 'Pertence a',
         ];
     }
+    public function getAdmregulations()
+    {
+        return $this->hasMany(Admregulations::className(), ['subcat_id' => 'id']);
+    }
 }

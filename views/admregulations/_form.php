@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use app\models\AdmMenuItems;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Admregulations */
@@ -12,11 +14,12 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
 
-    <?= $form->field($model, 'subcat_id')->textInput() ?>
+    <?php // $form->field($model, 'subcat_id')->textInput() ?>
+    <?= $form->field($model, 'subcat_id')->dropDownList(ArrayHelper::map(AdmMenuItems::find()->where(['visible' => 1, 'parent_id' => null])->orderBy("label ASC")->all(), 'id', 'label'),['prompt'=>'-- Selecione --'])  ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'name')->textInput(['maxlength'=>10,'style'=>'width:300px']) ?>
 
-    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'description')->textInput(['maxlength'=>10,'style'=>'width:600px']) ?>
 
     <?= $form->field($model, 'file')->fileInput() ?>
 

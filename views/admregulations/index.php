@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\Url;
+use yii\helpers\ArrayHelper;
+use app\models\AdmMenuItems;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\AdmregulationsSearch */
@@ -14,7 +16,7 @@ $this->title = 'Gestão dos Documentos';
 <div class="admregulations-index">
 
     <h1><span><?= Html::encode($this->title) ?></span>
-    <?= Html::a('Adicionar', ['create'], ['class' => 'btn btn-primary grid-button pull-right']) ?>
+    <?= Html::a('<i class="fa fa-plus"></i> Adicionar', ['create'], ['class' => 'btn btn-success grid-button pull-right']) ?>
     </h1>
     <hr/>
 
@@ -29,9 +31,19 @@ $this->title = 'Gestão dos Documentos';
         'tableOptions' => ['class'=>'table table-striped table-hover'],
         'columns' => [
             'id',
-            'subcat_id',
+            //'subcat_id',
+            [
+             'attribute' => 'subcat_id',
+             'format' => 'raw',
+             'enableSorting' => true,
+             'value' => function ($model) {                      
+                    return $model->admMenuItems->label;
+                    },
+             //'filter' => ArrayHelper::map(Location::find()->orderBy('nickname')->asArray()->all(), 'id', 'nickname'),
+             //'contentOptions'=>['style'=>'width: 7%;text-align:left'],
+            ],            
             'name',
-            'description',
+            //'description',
             [ 
             'attribute' => 'is_active',
             'format' => 'raw',
