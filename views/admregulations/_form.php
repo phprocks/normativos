@@ -15,11 +15,21 @@ use app\models\AdmMenuItems;
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
 
     <?php // $form->field($model, 'subcat_id')->textInput() ?>
-    <?= $form->field($model, 'subcat_id')->dropDownList(ArrayHelper::map(AdmMenuItems::find()->where(['visible' => 1, 'parent_id' => null])->orderBy("label ASC")->all(), 'id', 'label'),['prompt'=>'-- Selecione --'])  ?>
+    <?php // $form->field($model, 'subcat_id')->dropDownList(ArrayHelper::map(AdmMenuItems::find()->where(['visible' => 1, 'parent_id' => null])->orderBy("label ASC")->all(), 'id', 'label'),['prompt'=>'-- Selecione --'])  ?>
+    <?php
+    //Html::dropDownList('Admregulations[AdmMenuItems]', $model->admMenuItems, app\models\AdmMenuItems::getHierarchy(), [ 'class'=>'form-control required','prompt' => 'Selecione'] );
+    ?>
+    <?=
+    $form->field($model, 'subcat_id', [
+        'inputOptions' => [
+            'class' => 'selectpicker '
+        ]
+    ]
+    )->dropDownList(app\models\AdmMenuItems::getHierarchy(), ['prompt' => 'Selecione', 'class'=>'form-control required', 'style'=>'width:300px']);
+    ?>
+    <?= $form->field($model, 'name')->textInput(['maxlength'=>40,'style'=>'width:300px']) ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength'=>10,'style'=>'width:300px']) ?>
-
-    <?= $form->field($model, 'description')->textInput(['maxlength'=>10,'style'=>'width:600px']) ?>
+    <?= $form->field($model, 'description')->textInput(['maxlength'=>100,'style'=>'width:600px']) ?>
 
     <?= $form->field($model, 'file')->fileInput() ?>
 

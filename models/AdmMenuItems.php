@@ -62,4 +62,18 @@ class AdmMenuItems extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Admregulations::className(), ['subcat_id' => 'id']);
     }
+    public static function getHierarchy() {
+        $options = [];
+         
+        $parents = self::find()->where(['parent_id' => null])->all();
+        foreach($parents as $id => $p) {
+            $children = self::find()->where("parent_id=:parent_id", [":parent_id"=>$p->id])->all();
+            $child_options = [];
+            foreach($children as $child) {
+                $child_options[$child->id] = $child->label;
+            }
+            $options[$p->label] = $child_options;
+        }
+        return $options;
+    }    
 }
