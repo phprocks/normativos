@@ -34,6 +34,9 @@ AppAsset::register($this);
             ]);
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
+                'items' => [
+                    ['label' => 'Seja bem-vindo '.Yii::$app->user->displayName, 'url' => ['/user/account'], 'visible' => !Yii::$app->user->isGuest,],
+                    ],
                 // 'items' => [
                 //     ['label' => 'Home', 'url' => ['/site/index']],
                 //     ['label' => 'About', 'url' => ['/site/about']],
@@ -61,7 +64,7 @@ AppAsset::register($this);
         <div class="container">
             <p class="pull-left">Portal de Instrumentos Normativos - &copy; Sicoob Crediriodoce <?= date('Y') ?></p>
             <p class="pull-right"><i class="fa fa-lock"></i>
- <?php echo Html::a('Administração', ['/admregulations/index'], ['style'=>'color:#fff;']);?></p>
+            <?php echo Html::a('Administração', ['/admregulations/index'], ['style'=>'color:#fff;']);?></p>
         </div>
     </footer>
 

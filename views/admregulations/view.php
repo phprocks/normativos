@@ -63,7 +63,7 @@ $this->title = 'Visualização do Documento ' . '#' . $model->id;
             [
              'attribute' => 'is_active',
              'format' => 'raw',
-             'value' => $model->is_active == 1 ? '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Sim' : '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Não',
+             'value' => $model->is_active == 1 ? '<span style="color:green" class="glyphicon glyphicon-ok" aria-hidden="true"></span> Sim' : '<span style="color:red" class="glyphicon glyphicon-remove" aria-hidden="true"></span> Não',
              ],
         ],
     ]) ?>

@@ -6,16 +6,23 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\AdmMenuItems */
 
-$this->title = 'Create Adm Menu Items';
-$this->params['breadcrumbs'][] = ['label' => 'Adm Menu Items', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Adicionar Categoria';
+
 ?>
 <div class="adm-menu-items-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <hr/>
+
+    <div class="col-xs-6 col-md-3">
+        <?php  echo $this->render('//admregulations/_menu'); ?>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-9">
 
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
+
+    </div>
 
 </div>

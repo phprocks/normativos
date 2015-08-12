@@ -13,7 +13,7 @@ $this->title = 'Gestão das Categorias';
 <div class="adm-menu-items-index">
 
     <h1><span><?= Html::encode($this->title) ?></span>
-    <?= Html::a('Adicionar', ['create'], ['class' => 'btn btn-primary grid-button pull-right']) ?>
+    <?= Html::a('<i class="fa fa-plus"></i> Adicionar', ['create'], ['class' => 'btn btn-success grid-button pull-right']) ?>
     </h1>
     <hr/>
 
@@ -25,7 +25,9 @@ $this->title = 'Gestão das Categorias';
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         //'filterModel' => $searchModel,
-        'tableOptions' => ['class'=>'table table-striped table-hover'],        
+        'tableOptions' => ['class'=>'table table-striped table-hover '],
+        'emptyText'    => '</br><p class="text-info">Nenhum documento encontrado!</p>',   
+        'summary' => "<p class=\"text-info pull-right\"><h5>Quantidade de categorias: {totalCount}</h5></p>",                
         'columns' => [
             'id',
             //'name',

@@ -16,13 +16,16 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'label')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'icon')->textInput(['maxlength' => true]) ?>
+    <?php //echo $form->field($model, 'icon')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'visible')->textInput() ?>
+    <?= $form->field($model, 'visible')->radioList([
+        '1' => 'Sim', 
+        '0' => 'Não',
+        ], ['itemOptions' => ['class' =>'radio-inline','labelOptions'=>array('style'=>'padding:5px;')]])->label('Ativo') ?>
 
-    <?= $form->field($model, 'options')->textarea(['rows' => 6]) ?>
+    <?php //echo $form->field($model, 'options')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'parent_id')->textInput() ?>
 

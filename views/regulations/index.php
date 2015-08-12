@@ -27,7 +27,7 @@ $this->title = 'Categorias';
         'options' => [
             'type' => SideNav::TYPE_DEFAULT,
             'heading' => false,
-            'encodeLabels' => false,
+            'encodeLabels' => true,
             ],
         //'class'=>'head-style',
         ]);

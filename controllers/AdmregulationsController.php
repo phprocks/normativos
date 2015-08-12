@@ -75,6 +75,7 @@ class AdmregulationsController extends Controller
         $model = new Admregulations();
 
         //$model->status_id = 1;
+        $model->is_active = 1;
         $model->created = date('Y-m-d');        
 
             if ($model->load(Yii::$app->request->post())) {

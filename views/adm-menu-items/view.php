@@ -6,24 +6,28 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\AdmMenuItems */
 
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Adm Menu Items', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Categoria ' . '#' . $model->id;
 ?>
 <div class="adm-menu-items-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+    <h1><span><?= Html::encode($this->title) ?></span>
+    <div class="pull-right">
+        <?= Html::a('<i class="fa fa-pencil-square-o"></i> Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<i class="fa fa-times"></i> Excluir', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Tem certeza que deseja excluir?',
                 'method' => 'post',
             ],
         ]) ?>
-    </p>
+        </div>
+    </h1>
+    <hr/>
+
+    <div class="col-xs-6 col-md-3">
+        <?php  echo $this->render('//admregulations/_menu'); ?>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-9">
 
     <?= DetailView::widget([
         'model' => $model,
@@ -38,5 +42,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'parent_id',
         ],
     ]) ?>
+    </div>
 
 </div>

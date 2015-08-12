@@ -70,6 +70,7 @@ class RegulationsSearch extends Regulations
             'subcat_id' => $this->subcat_id,
             'created' => $this->created,
             'updated' => $this->updated,
+            'is_active' => 1,
         ]);
 
         $query->orFilterWhere(['like', 'name', $this->globalSearch])

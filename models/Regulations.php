@@ -66,8 +66,8 @@ class Regulations extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getSubcat()
+    public function getAdmMenuItems()
     {
-        return $this->hasOne(Subcat::className(), ['id' => 'subcat_id']);
+        return $this->hasOne(AdmMenuItems::className(), ['id' => 'subcat_id']);
     }
 }
