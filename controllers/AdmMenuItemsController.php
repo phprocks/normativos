@@ -62,6 +62,8 @@ class AdmMenuItemsController extends Controller
     {
         $model = new AdmMenuItems();
 
+        $model->visible = 1;
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
