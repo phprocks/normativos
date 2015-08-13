@@ -12,9 +12,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'name')->textInput(['maxlength'=>40,'style'=>'width:300px'])->hint('Para uso interno!') ?>
 
-    <?= $form->field($model, 'label')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'label')->textInput(['maxlength'=>40,'style'=>'width:300px'])->hint('Nome que irá aparecer no sistema') ?>
 
     <?php //echo $form->field($model, 'icon')->textInput(['maxlength' => true]) ?>
 
@@ -27,10 +27,18 @@ use yii\widgets\ActiveForm;
 
     <?php //echo $form->field($model, 'options')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'parent_id')->textInput() ?>
+    <?php //echo $form->field($model, 'parent_id')->textInput() ?>
+    <?=
+    $form->field($model, 'parent_id', [
+        'inputOptions' => [
+            'class' => 'selectpicker '
+        ]
+    ]
+    )->dropDownList(app\models\AdmMenuItems::getCat(), ['prompt' => 'Nenhum', 'class'=>'form-control required', 'style'=>'width:300px']);
+    ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Gravar' : 'Gravar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

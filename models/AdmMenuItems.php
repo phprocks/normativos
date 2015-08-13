@@ -80,4 +80,18 @@ class AdmMenuItems extends \yii\db\ActiveRecord
         }
         return $options;
     }    
+    public static function getCat() {
+        $options = [];
+         
+        $parents = self::find()->where(['parent_id' => null])->all();
+        foreach($parents as $id => $p) {
+            $children = self::find()->where("parent_id=:parent_id", [":parent_id"=>$p->id])->all();
+            $child_options = [];
+            foreach($children as $child) {
+                $child_options[$child->id] = $child->label;
+            }
+            $options[$p->label] = $child_options;
+        }
+        return $options;
+    }  
 }
