@@ -32,7 +32,7 @@ class AdmMenuItems extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'label'], 'required'],
+            [['name'], 'required'],
             [['visible', 'parent_id'], 'integer'],
             [['options'], 'string'],
             [['name', 'label'], 'string', 'max' => 50],
@@ -79,10 +79,17 @@ class AdmMenuItems extends \yii\db\ActiveRecord
             $options[$p->label] = $child_options;
         }
         return $options;
+<<<<<<< HEAD
     }    
     public static function getCat() {
         $options = [];
          
+=======
+    }
+    public static function getCat() {
+        $options = [];
+        
+>>>>>>> master
         $parents = self::find()->where(['parent_id' => null])->all();
         foreach($parents as $id => $p) {
             $children = self::find()->where("parent_id=:parent_id", [":parent_id"=>$p->id])->all();
@@ -93,5 +100,9 @@ class AdmMenuItems extends \yii\db\ActiveRecord
             $options[$p->label] = $child_options;
         }
         return $options;
+<<<<<<< HEAD
     }  
+=======
+    }       
+>>>>>>> master
 }
