@@ -7,7 +7,7 @@ use app\assets\AppAsset;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
-$this->title = 'Portal de Instrumentos Normativos';
+$this->title = 'Sicoob Crediriodoce - Portal de Instrumentos Normativos';
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>

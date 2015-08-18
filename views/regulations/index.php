@@ -84,16 +84,16 @@ $this->title = 'Categorias';
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        //'filterModel' => $searchModel,
+        'filterModel' => $searchModel,
         'tableOptions' => ['class'=>'table table-striped table-bordered'],
         'emptyText'    => '</br><p class="text-info">Nenhum documento encontrado!</p>',   
         'summary' => "<p class=\"text-info pull-right\"><h5>Resultado: {totalCount} documento(s)</h5></p>",         
         'columns' => [
-            [
-             'attribute' => 'subcat_id',
-             'enableSorting' => true,
-             'contentOptions'=>['style'=>'width: 5%;text-align:left'],
-            ],            
+            // [
+            //  'attribute' => 'subcat_id',
+            //  'enableSorting' => true,
+            //  'contentOptions'=>['style'=>'width: 5%;text-align:left'],
+            // ],            
             [
              'attribute' => 'name',
              'enableSorting' => true,

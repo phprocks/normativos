@@ -88,6 +88,7 @@ class AdmregulationsController extends Controller
                     $path = $model->getImageFile();
                     $file->saveAs($path);
                 }
+                Yii::$app->session->setFlash("regulations", 'Documento inserido com sucesso');
                 return $this->redirect(['view', 'id' => $model->id]);
             } else {
                 // error in saving model

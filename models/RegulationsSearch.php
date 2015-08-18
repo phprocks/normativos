@@ -73,7 +73,7 @@ class RegulationsSearch extends Regulations
             'is_active' => 1,
         ]);
 
-        $query->orFilterWhere(['like', 'name', $this->globalSearch])
+        $query->andFilterWhere(['like', 'name', $this->globalSearch])
             ->orFilterWhere(['like', 'description', $this->globalSearch]);
 
         return $dataProvider;

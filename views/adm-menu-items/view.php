@@ -31,15 +31,17 @@ $this->title = 'Categoria ' . '#' . $model->id;
 
     <?= DetailView::widget([
         'model' => $model,
+        'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '<em>Nenhum<em>'],
         'attributes' => [
             'id',
             'name',
             'label',
-            'icon',
-            'url:url',
-            'visible',
-            'options:ntext',
             'parent_id',
+            [
+             'attribute' => 'visible',
+             'format' => 'raw',
+             'value' => $model->visible == 1 ? '<span style="color:green" class="glyphicon glyphicon-ok" aria-hidden="true"></span> Sim' : '<span style="color:red" class="glyphicon glyphicon-remove" aria-hidden="true"></span> Não',
+             ],                        
         ],
     ]) ?>
     </div>

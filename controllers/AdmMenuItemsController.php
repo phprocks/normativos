@@ -65,7 +65,8 @@ class AdmMenuItemsController extends Controller
         $model->visible = 1;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+                Yii::$app->session->setFlash("category", 'Categoria incluída com sucesso!');
+                return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -84,7 +85,8 @@ class AdmMenuItemsController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+                Yii::$app->session->setFlash("category", 'Categoria alterada com sucesso!');
+                return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,

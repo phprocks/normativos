@@ -27,13 +27,20 @@ $this->title = 'Visualização do Documento ' . '#' . $model->id;
         ]) ?>
         </div>
     </h1>
-    <hr/>
+    <hr/>   
 
     <div class="col-xs-6 col-md-3">
 
         <?php  echo $this->render('_menu'); ?>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-9">
+    <?php if ($flash = Yii::$app->session->getFlash("regulations")): ?>
+
+    <div class="alert alert-success">
+        <p><em><?= $flash ?></em></p>
+    </div>
+
+    <?php endif; ?> 
         <?= DetailView::widget([
         'model' => $model,
         'attributes' => [

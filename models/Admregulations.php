@@ -41,7 +41,7 @@ class Admregulations extends \yii\db\ActiveRecord
             [['created', 'updated'], 'safe'],
             [['file', 'filename'], 'safe'],
             [['name', 'description'], 'string', 'max' => 100],
-             [['file'], 'file', 'extensions' => 'pdf, jpg', 'maxSize' => 512000, 'tooBig' => 'Arquivo acima do limite de 500KB' , 'skipOnEmpty' => true],
+             [['file'], 'file', 'extensions' => 'pdf, jpg', 'maxSize' => 1024 * 1024 * 4, 'tooBig' => 'Arquivo acima do limite de 500KB' , 'skipOnEmpty' => true],
         ];
     }
 
